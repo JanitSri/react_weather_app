@@ -1,5 +1,6 @@
 .app-bg-color{
   background-color: #172334;
+  min-height: 100vh;
 }
 
 .bg-color {
@@ -15,23 +16,23 @@
 }
 
 .current-header{
-  font-size: 400%;
+  font-size: 225%;
 }
 
 .current-loc{
-  font-size: 125%;
+  font-size: 100%;
 }
 
 .current-img{
- width: 35%; 
+ width: 10em; 
 }
 
 .current-temp{
-  font-size: 250%; 
+  font-size: 200%; 
 }
 
 .current-desc{
-  font-size: 150%; 
+  font-size: 125%; 
 }
 
 .hr {
@@ -49,21 +50,25 @@
 }
 
 .forecast-date{
-  font-size: 175%;
+  font-size: 125%;
 }
 
 .forecast-img{
-  width: 100%;
+  width: 7em;
 }
 
 .forecast-temp{
-  font-size: 175%;
-}
-
-.forecast-cond{
   font-size: 150%;
 }
 
-.forecast-desc{
+.forecast-cond{
   font-size: 125%;
+}
+
+.forecast-desc{
+  font-size: 100%;
+}
+
+.error-hint{
+  font-size: 2em;
 }

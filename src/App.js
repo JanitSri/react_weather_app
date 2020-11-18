@@ -42,13 +42,12 @@ function App() {
     try{
       const forecast = await getForecast(cityInput, currentWeather.coord.lat, currentWeather.coord.lon);
       setForecastWeatherData(forecast);
-      setforecastError(true);
+      setforecastError(false);
     } catch (error){
       console.log(error);
       setforecastError(true);
     }
   }
-
 
   return (
     <div className="app-bg-color py-5">
