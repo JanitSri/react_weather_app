@@ -1,38 +1,69 @@
-.App {
-  text-align: center;
+.app-bg-color{
+  background-color: #172334;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-color {
+  background-image: url("./assets/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app-font {
+  font-family: Impact, Charcoal, sans-serif;
+  color: #000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.current-header{
+  font-size: 400%;
 }
 
-.App-link {
-  color: #61dafb;
+.current-loc{
+  font-size: 125%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.current-img{
+ width: 35%; 
+}
+
+.current-temp{
+  font-size: 250%; 
+}
+
+.current-desc{
+  font-size: 150%; 
+}
+
+.hr {
+  height: 2px;
+  background-color: #fff;
+}
+
+.error{
+  color: red;
+  font-size: 350%;
+}
+
+.forecast-box{
+  border: 1px solid #fff;
+}
+
+.forecast-date{
+  font-size: 175%;
+}
+
+.forecast-img{
+  width: 100%;
+}
+
+.forecast-temp{
+  font-size: 175%;
+}
+
+.forecast-cond{
+  font-size: 150%;
+}
+
+.forecast-desc{
+  font-size: 125%;
 }

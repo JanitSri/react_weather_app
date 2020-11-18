@@ -1,51 +1,70 @@
 import React, { useState } from 'react';
-import axios from "axios";
 
 import './App.css';
 import Container from 'react-bootstrap/Container'; 
 import Input from './components/Input';
-import Output from './components/Output';
+import Current from './components/Current';
+import Forecast from './components/Forecast';
 import ErrorOut from './components/ErrorOut';
+import { getInput, getForecast, getCurrentWeather } from './utils/Data'
 
 
 function App() {
-  const [data, setData] = useState(null);
+  const [currentWeatherData, setCurrentWeatherData] = useState(null);
+  const [forecastWeatherData, setForecastWeatherData] = useState(null);
+  
   const [isInvalid, setIsInvalid] = useState(false);
-  const [isError, setIsError] = useState(false);
+  
+  const [currentWeatherError, setCurrentWeatherError] = useState(false);
+  const [forecastError, setforecastError] = useState(false);
 
-  const getWeatherData = async (e) => {
-    e.preventDefault();
-
-    const city = e.target.elements.city.value;
-
-    if(city.trim() === ''){
+  const inputHandler = async (e) => {
+    let cityInput = getInput(e);
+    if(cityInput == null){
       setIsInvalid(true);
       return;
     }
-    
+
+    setIsInvalid(false);
+
+    // get current weather data
+    let currentWeather;
     try {
-      setIsInvalid(false);
-      console.log(`GETTING WEATHER DATA FOR ${city}`);
-      const URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
-      let response = await axios.get(URL);
-      let jsonData = await response.data;
-      setData(jsonData);
-      setIsError(false);
+      currentWeather = await getCurrentWeather(cityInput);
+      setCurrentWeatherData(currentWeather);
+      setCurrentWeatherError(false);
     } catch (error) {
       console.log(error);
-      setIsError(true);
+      setCurrentWeatherError(true);
+    }
+
+    // get daily forecast data
+    try{
+      const forecast = await getForecast(cityInput, currentWeather.coord.lat, currentWeather.coord.lon);
+      setForecastWeatherData(forecast);
+      setforecastError(true);
+    } catch (error){
+      console.log(error);
+      setforecastError(true);
     }
   }
-  
+
+
   return (
-    <Container className="p-4">
-      <h1>Weather Application</h1>
-      <Input onSubmit={getWeatherData} invalidInput={isInvalid}></Input>
-      {isError
-        ? <ErrorOut></ErrorOut>
-        : <Output outputData={data}></Output>
-      }
-    </Container>
+    <div className="app-bg-color py-5">
+      <Container className="app-font bg-color p-4 text-center">
+        <Input onSubmit={inputHandler} invalidInput={isInvalid}></Input>
+        {currentWeatherError
+          ? <ErrorOut></ErrorOut>
+          : <Current currentData={currentWeatherData}></Current>
+        }
+        <hr className="hr"></hr>
+        {forecastError
+          ? <ErrorOut></ErrorOut>
+          : <Forecast forecastData={forecastWeatherData}></Forecast>
+        }
+      </Container>
+    </div>
   );
 }
 
