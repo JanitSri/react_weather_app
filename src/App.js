@@ -6,12 +6,13 @@ import Input from './components/Input';
 import Current from './components/Current';
 import Forecast from './components/Forecast';
 import ErrorOut from './components/ErrorOut';
-import { getInput, getForecast, getCurrentWeather } from './utils/Data'
+import { getInput, getForecast, getCurrentWeather, getLocalTime } from './utils/Data'
 
 
 function App() {
   const [currentWeatherData, setCurrentWeatherData] = useState(null);
   const [forecastWeatherData, setForecastWeatherData] = useState(null);
+  const [timeData, setTimeData] = useState(null);
   
   const [isInvalid, setIsInvalid] = useState(false);
   
@@ -33,6 +34,9 @@ function App() {
       currentWeather = await getCurrentWeather(cityInput);
       setCurrentWeatherData(currentWeather);
       setCurrentWeatherError(false);
+
+      let currentTime = await getLocalTime(currentWeather.name, currentWeather.coord.lat, currentWeather.coord.lon);
+      setTimeData(currentTime);
     } catch (error) {
       console.log(error);
       setCurrentWeatherError(true);
@@ -55,7 +59,7 @@ function App() {
         <Input onSubmit={inputHandler} invalidInput={isInvalid}></Input>
         {currentWeatherError
           ? <ErrorOut></ErrorOut>
-          : <Current currentData={currentWeatherData}></Current>
+          : <Current currentData={currentWeatherData} time={timeData}></Current>
         }
         <hr className="hr"></hr>
         {forecastError
