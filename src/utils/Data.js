@@ -14,7 +14,7 @@ export const getInput = (e) => {
 
 // GET request for the weather data 
 const getData = async (url) => {
-  let response = await axios.get(url);
+  let response = await axios.get(url, {https:true});
   let jsonData = await response.data;
   return jsonData;
 }
