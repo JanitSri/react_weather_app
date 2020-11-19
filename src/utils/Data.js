@@ -21,7 +21,7 @@ const getData = async (url) => {
 
 // get the current weather forecast
 export const getCurrentWeather = (city) => {
-  console.log(`GETTING CURRENT WEATHER FOR ${city}`);
+  console.log(`GETTING THE CURRENT WEATHER FOR ${city}`);
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
   let currentResult = getData(URL);
   return currentResult;
@@ -29,7 +29,7 @@ export const getCurrentWeather = (city) => {
 
 // get the daily forecast for 7 days
 export const getForecast = (city, latitude, longitude) => {
-  console.log(`GETTING DAILY WEATHER FORECAST FOR ${city}`);
+  console.log(`GETTING THE DAILY WEATHER FORECAST FOR ${city}`);
   const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
   let forecastResult = getData(URL);
   return forecastResult;
@@ -37,7 +37,7 @@ export const getForecast = (city, latitude, longitude) => {
 
 // get the local time for the city
 export const getLocalTime = (city, latitude, longitude) => {
-  console.log(`GETTING LOCAL TIME FOR ${city}`);
+  console.log(`GETTING THE LOCAL TIME FOR ${city}`);
   const URL = `https://api.ipgeolocation.io/timezone?apiKey=${process.env.REACT_APP_IPGEOLOCATION_API}&lat=${latitude}&long=${longitude}`;
   let timeResult = getData(URL);
   return timeResult;
