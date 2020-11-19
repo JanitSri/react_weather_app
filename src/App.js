@@ -38,7 +38,6 @@ function App() {
       let currentTime = await getLocalTime(currentWeather.name, currentWeather.coord.lat, currentWeather.coord.lon);
       setTimeData(currentTime);
     } catch (error) {
-      console.log(error);
       setCurrentWeatherError(true);
     }
 
@@ -48,7 +47,6 @@ function App() {
       setForecastWeatherData(forecast);
       setforecastError(false);
     } catch (error){
-      console.log(error);
       setforecastError(true);
     }
   }
