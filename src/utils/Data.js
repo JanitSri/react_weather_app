@@ -29,7 +29,7 @@ export const getCurrentWeather = (city) => {
 
 // get the daily forecast for 7 days
 export const getForecast = (city, latitude, longitude) => {
-  console.log(`GETTING WEATHER FORECAST FOR ${city}`);
+  console.log(`GETTING DAILY WEATHER FORECAST FOR ${city}`);
   const URL = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
   let forecastResult = getData(URL);
   return forecastResult;
