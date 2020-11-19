@@ -4,7 +4,7 @@ function Loading(){
   
   return (
     <Container className="my-4 error">
-      <p>Error! Try Again Later.</p>
+      <p>Error! Try Another City.</p>
     </Container>
   );
 }
