@@ -22,7 +22,7 @@ const getData = async (url) => {
 // get the current weather forecast
 export const getCurrentWeather = (city) => {
   console.log(`GETTING CURRENT WEATHER FOR ${city}`);
-  const URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+  const URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
   let currentResult = getData(URL);
   return currentResult;
 }
