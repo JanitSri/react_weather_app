@@ -1,7 +1,4 @@
-# 101229102_comp3123_a2
-
-### Janit Sriganeshaelankovan
-### React Weather App using OpenWeather API
+# React Weather App using OpenWeather API
 
 <br />
 <img src="screenshots/sc1.PNG" style="margin-bottom:25px" width="500" height="350"/>
